@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TH_External_ID__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>A concatenation of the Trailhead User ID and Badge ID used to determine if this is a new or an updated record via External ID</description>
+    <externalId>true</externalId>
+    <inlineHelpText>Trailhead Contact + "-' + Trailhead badge - an external identifier to allow the system to determine if it should Update or insert a badge record</inlineHelpText>
+    <label>TH External ID</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

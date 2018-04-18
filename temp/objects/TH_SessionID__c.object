@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Used to store the OAuth token for the Trailhead API
+To derive it:
+
+Ensure you have Python 3.6 installed and have installed requests using pip3
+Change to the folder that has the script &quot;oauth3_login.py&quot; in it.
+On Stephen&apos;s MacBook Air it is in
+&quot;/Users/stephen,stanley/Google Drive/Documents/Personal&quot;
+
+(copy and execute this command to go straight there:)
+
+$ cd &quot;/Users/stephen.stanley/Google Drive/Documents/Personal&quot;
+
+MAKE SURE YOU ARE ON THE VPN
+
+use this command:
+
+$ python3 oauth3_login.py
+
+Enter your username and password when prompted
+
+On this custom setting, click on &quot;Manage&quot;, then &quot;Edit&quot; and paste the entire string after the word Bearer following the line &quot;access_token&quot;, completely replacing the existing string value</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Access_Token__c</fullName>
+        <externalId>false</externalId>
+        <label>Access Token</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Refresh_Token__c</fullName>
+        <externalId>false</externalId>
+        <label>Refresh Token</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SID__c</fullName>
+        <externalId>false</externalId>
+        <label>SID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>TH_SessionID</label>
+    <visibility>Public</visibility>
+</CustomObject>

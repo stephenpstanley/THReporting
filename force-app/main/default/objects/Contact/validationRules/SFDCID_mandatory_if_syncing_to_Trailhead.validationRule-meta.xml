@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SFDCID_mandatory_if_syncing_to_Trailhead</fullName>
+    <active>true</active>
+    <description>If Monitor Trailhead Badges = TRUE then SFDCID__c cannot be null</description>
+    <errorConditionFormula>Monitor_Trailhead_Badges__c = TRUE &amp;&amp;
+ ISBLANK(SFDCID__c)</errorConditionFormula>
+    <errorDisplayField>SFDCID__c</errorDisplayField>
+    <errorMessage>SFDCID  is required in order to sync Trailhead badges
+Monitor Trailhead Badges cannot be checked without a 62org user ID in the SFDCID field</errorMessage>
+</ValidationRule>

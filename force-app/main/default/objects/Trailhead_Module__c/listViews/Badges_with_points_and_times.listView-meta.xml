@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Badges_with_points_and_times</fullName>
+    <columns>NAME</columns>
+    <columns>Title__c</columns>
+    <columns>Type__c</columns>
+    <columns>Points_Available__c</columns>
+    <columns>Estimated_Time_mins__c</columns>
+    <columns>Points_Minute__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Archived__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Badges with points and times</label>
+    <language>en_US</language>
+</ListView>

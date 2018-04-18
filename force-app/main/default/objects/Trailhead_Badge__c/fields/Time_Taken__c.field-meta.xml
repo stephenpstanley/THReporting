@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Time_Taken__c</fullName>
+    <externalId>false</externalId>
+    <formula>( IF( Completed__c, Finished_At__c,  NOW()) - First_Attempted_At__c )*24*60</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Time taken to complete  badge, calculated as the minutes between the first attempt and finishing the badge.  If the badge has not been finished, then it is the time between now() and when the first attempt was made</inlineHelpText>
+    <label>Minutes Taken</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>UserID__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Required to allow manager notifications when a staff member gets enough badges to be a potential ranger</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Required on the manager's contact record to allow the manager to receive notifications when a staff member gets enough badges to be a potential ranger
+Used with Notify Mgr if Ranger Badge Count Met</inlineHelpText>
+    <label>Trailhead Org UserID</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Contacts</relationshipName>
+    <required>false</required>
+    <type>Lookup</type>
+</CustomField>

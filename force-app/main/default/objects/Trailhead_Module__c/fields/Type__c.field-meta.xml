@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Superbadge</fullName>
+                <default>false</default>
+                <label>Superbadge</label>
+            </value>
+            <value>
+                <fullName>PeerAssessment</fullName>
+                <default>false</default>
+                <label>PeerAssessment</label>
+            </value>
+            <value>
+                <fullName>Th::Project</fullName>
+                <default>false</default>
+                <label>Th::Project</label>
+            </value>
+            <value>
+                <fullName>Th::Module</fullName>
+                <default>false</default>
+                <label>Th::Module</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

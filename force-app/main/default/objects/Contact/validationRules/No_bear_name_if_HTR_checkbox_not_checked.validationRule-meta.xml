@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_bear_name_if_HTR_checkbox_not_checked</fullName>
+    <active>true</active>
+    <errorConditionFormula>NOT (ISBLANK(Honorary_Ranger_Bears_Name__c)) &amp;&amp;
+Honorary_Trailhead_Ranger__c = FALSE</errorConditionFormula>
+    <errorDisplayField>Honorary_Trailhead_Ranger__c</errorDisplayField>
+    <errorMessage>No way Jose', you can't record your bear's name if you aren't an Honorary Trailhead Ranger!</errorMessage>
+</ValidationRule>

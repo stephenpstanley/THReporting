@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Monitor_Trailhead_Badges__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Check this box in order to sync badges from Trailhead
+The first time you check the box and save the record it will sync all Trailhead badges for this user
+If you uncheck the box it will delete all the related Trailhead badge records</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Check this box in order to sync badges from Trailhead
+The first time you check the box and save the record it will sync all Trailhead badges for this user
+If you uncheck the box it will delete all the related Trailhead badge records</inlineHelpText>
+    <label>Monitor Trailhead Badges</label>
+    <type>Checkbox</type>
+</CustomField>

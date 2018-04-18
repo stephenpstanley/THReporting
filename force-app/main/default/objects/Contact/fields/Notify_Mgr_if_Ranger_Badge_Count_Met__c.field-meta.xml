@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Notify_Mgr_if_Ranger_Badge_Count_Met__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Validation on this field required the manager field to be populated first.  
+Minimum Badge Count is based on formula field Potential_Ranger__c being set to true.  If the limit changes from the current value of 85, then the formula will need to be updated.  The process will only @mention the manager if the manager is a user of the org and the checkbox Honorary_Trailhead_Ranger__c is not already true.  This should handle the case where the 85 badge limit is increased beyond a point where existing rangers are in terms of badge counts</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If this person crosses the badge threshold required to become an Honorary Trailhead Ranger, then @mention their manager.</inlineHelpText>
+    <label>Notify Mgr if Ranger Badge Count Met</label>
+    <type>Checkbox</type>
+</CustomField>

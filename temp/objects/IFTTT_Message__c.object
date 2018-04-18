@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>S1_IFTTT_Message</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>S1_IFTTT_Message</fullName>
+        <fields>Alert_Combo__c</fields>
+        <fields>Message_Source__c</fields>
+        <label>S1_IFTTT_Message</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ReadWrite</externalSharingModel>
+    <fields>
+        <fullName>Acknowledged__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Some processes may want only to handle a message once so will set this to True once it has been handled</description>
+        <externalId>false</externalId>
+        <label>Acknowledged</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Alert_Combo__c</fullName>
+        <description>Concatenated field used to drive IFTTT alerts.  At time of writing, a value of &apos;TRUE-Badge&apos; is used to trigger a badge alert and &apos;True-Fatal&apos; sends an error message.  This is required as it looks like the IFTTT filter criteria only allows checking the value of a single field</description>
+        <externalId>false</externalId>
+        <formula>IF(IFTTT_Message__c  = TRUE, &apos;TRUE-&apos;, &apos;FALSE-&apos;)  &amp; 
+ IF (ISPICKVAL(Severity__c, &apos;Information&apos;),&apos;Information&apos;, &apos;&apos;) &amp;  
+ IF (ISPICKVAL(Severity__c, &apos;Warning&apos;),&apos;Warning&apos;, &apos;&apos;) &amp;  
+ IF (ISPICKVAL(Severity__c, &apos;Severe&apos;),&apos;Severe&apos;, &apos;&apos;) &amp; 
+ IF (ISPICKVAL(Severity__c, &apos;Fatal&apos;),&apos;Fatal&apos;, &apos;&apos;) &amp;  
+ IF (ISPICKVAL(Severity__c, &apos;IFTTT&apos;),&apos;IFTTT&apos;, &apos;&apos;) &amp;  
+ IF (ISPICKVAL(Severity__c, &apos;Badge&apos;),&apos;Badge&apos;, &apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alert_Combo</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IFTTT_Message__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If checked, then IFTTT will pick the message up and process it</description>
+        <externalId>false</externalId>
+        <label>IFTTT Message</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Message_Source__c</fullName>
+        <description>The name of the process, trigger or class that created the message record</description>
+        <externalId>false</externalId>
+        <label>Message Source</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Message_Text__c</fullName>
+        <description>The message text</description>
+        <externalId>false</externalId>
+        <label>Message Text</label>
+        <length>32768</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Severity__c</fullName>
+        <externalId>false</externalId>
+        <label>Severity</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Information</fullName>
+                    <default>false</default>
+                    <label>Information</label>
+                </value>
+                <value>
+                    <fullName>Warning</fullName>
+                    <default>false</default>
+                    <label>Warning</label>
+                </value>
+                <value>
+                    <fullName>Severe</fullName>
+                    <default>false</default>
+                    <label>Severe</label>
+                </value>
+                <value>
+                    <fullName>Fatal</fullName>
+                    <default>false</default>
+                    <label>Fatal</label>
+                </value>
+                <value>
+                    <fullName>IFTTT</fullName>
+                    <default>false</default>
+                    <label>IFTTT</label>
+                </value>
+                <value>
+                    <fullName>Badge</fullName>
+                    <default>false</default>
+                    <label>Badge</label>
+                </value>
+                <value>
+                    <fullName>Delay</fullName>
+                    <default>false</default>
+                    <label>Delay</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>IFTTT Message</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Message_Text__c</columns>
+        <columns>Message_Source__c</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
+    <nameField>
+        <displayFormat>M-{00000000}</displayFormat>
+        <label>IFTTT Message Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>IFTTT Messages</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <visibility>Public</visibility>
+</CustomObject>

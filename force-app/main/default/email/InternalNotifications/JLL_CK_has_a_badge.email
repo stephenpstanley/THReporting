@@ -1,0 +1,6 @@
+<table border="0" cellpadding="5" width="550" cellspacing="5" height="400" >
+<tr valign="top" height="400" >
+<td tEditID="c1r1" style=" background-color:#FFFFFF; bEditID:r3st1; color:#000000; bLabel:main; font-size:12pt; font-family:arial;" aEditID="c1r1" locked="0" >
+<![CDATA[Hi Jean-Luc<br><br>I thought you might like to know:<br><br>CK has now completed:<br>{!Contact.Modules_Completed__c} Modules<br>{!Contact.Projects_Completed__c} Projects<br>{!Contact.Superbadges_Completed__c} Superbadges<br>{!Contact.Peer_Assessments_Completed__c} Peer Assessments<br><br>Making a total of {!Contact.Total_Badge_Count__c} badges and {!Contact.Trailhead_Points__c} points.<br><br>He's also got {!Contact.Badges_In_Progress__c} badges in progress<br><br>If you want to stop these notifications, get Stephen to disable the Business Process named "JLL - CK Badge Alert" in his Trailhead monitoring org<br><br><br>]]></td>
+</tr>
+</table>

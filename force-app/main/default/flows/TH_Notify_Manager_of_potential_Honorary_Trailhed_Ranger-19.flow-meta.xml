@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>postTargetUserType</name>
+            <value>
+                <stringValue>REFERENCE</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>textJson</name>
+            <value>
+                <stringValue>{"mentions":[],"message":"Hi {![Contact].ReportsTo.FirstName} - it looks like {![Contact].FirstName} {![Contact].LastName} is ready to be inducted into the Honorary Trailhead Ranger's Hall of Fame\n\n{![Contact].FirstName} has just made it to Ranger status and it looks like their welcome pack and bear is winging its way to their door.\n\nAchievements:\nSuperbadges Completed: {![Contact].Superbadges_Completed__c}\nProjects Completed:          {![Contact].Projects_Completed__c}\nModules Completed:         {![Contact].Modules_Completed__c}\nTotal Completed Badges:  {![Contact].Total_Badge_Count__c}\nTotal Points:                         {![Contact].Trailhead_Points__c}\n\n(Badges still in progress: {![Contact].Badges_in_progress__c} )\n"}</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>@mention their manager</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <connector>
+            <targetReference>myRule_1_A2</targetReference>
+        </connector>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <stringValue>Hi {!myVariable_current.ReportsTo.FirstName} - it looks like {!myVariable_current.FirstName} {!myVariable_current.LastName} is ready to be inducted into the Honorary Trailhead Ranger's Hall of Fame
+
+{!myVariable_current.FirstName} has just made it to Ranger status and it looks like their welcome pack and bear is winging its way to their door.
+
+Achievements:
+Superbadges Completed: {!myVariable_current.Superbadges_Completed__c}
+Projects Completed:          {!myVariable_current.Projects_Completed__c}
+Modules Completed:         {!myVariable_current.Modules_Completed__c}
+Total Completed Badges:  {!myVariable_current.Total_Badge_Count__c}
+Total Points:                         {!myVariable_current.Trailhead_Points__c}
+
+(Badges still in progress: {!myVariable_current.Badges_In_Progress__c} )
+</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>type</name>
+            <value>
+                <stringValue>USER</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <elementReference>myVariable_current.ReportsTo.UserID__r.Id</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>New Ranger and should tell manager?</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision4</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>New ranger but don't tell manager</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>2.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision4</name>
+        <label>myDecision4</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_5</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_5</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_5_A1</targetReference>
+            </connector>
+            <label>under badge &amp; points threshold</label>
+        </rules>
+    </decisions>
+    <description>If a Contact reaches Ranger status @mention their manager and set Honorary Trailhead Ranger = TRUE</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>PRIORVALUE([Contact].Trailhead_Rank__c) != "" &amp;&amp; 
+NOT Contains(UPPER(PRIORVALUE([Contact].Trailhead_Rank__c)), "RANGER") &amp;&amp;
+Contains(UPPER( [Contact].Trailhead_Rank__c), "RANGER")  &amp;&amp;
+[Contact].Notify_Mgr_if_Ranger_Badge_Count_Met__c = TRUE &amp;&amp;
+[Contact].Manager_Notified_Potential_Ranger__c = FALSE &amp;&amp;
+NOT isblank([Contact].ReportsToId ) &amp;&amp;
+[Contact].Honorary_Trailhead_Ranger__c = FALSE &amp;&amp;
+(NOT ISNEW() )</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>PRIORVALUE({!myVariable_current.Trailhead_Rank__c}) != "" &amp;&amp; 
+NOT Contains(UPPER(PRIORVALUE({!myVariable_current.Trailhead_Rank__c})), "RANGER") &amp;&amp;
+Contains(UPPER( {!myVariable_current.Trailhead_Rank__c}), "RANGER")  &amp;&amp;
+{!myVariable_current.Notify_Mgr_if_Ranger_Badge_Count_Met__c} = TRUE &amp;&amp;
+{!myVariable_current.Manager_Notified_Potential_Ranger__c} = FALSE &amp;&amp;
+NOT isblank({!myVariable_current.ReportsToId} ) &amp;&amp;
+{!myVariable_current.Honorary_Trailhead_Ranger__c} = FALSE &amp;&amp;
+(NOT ISNEW() )</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>((Contains(UPPER(PRIORVALUE([Contact].Trailhead_Rank__c)),  "RANGER") = FALSE) || 
+ISBLANK(PRIORVALUE([Contact].Trailhead_Rank__c)) )
+&amp;&amp;
+(Contains(UPPER( [Contact].Trailhead_Rank__c), "RANGER")  = TRUE) &amp;&amp;
+[Contact].Notify_Mgr_if_Ranger_Badge_Count_Met__c = FALSE &amp;&amp;
+[Contact].Honorary_Trailhead_Ranger__c = FALSE</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>((Contains(UPPER(PRIORVALUE({!myVariable_current.Trailhead_Rank__c})),  "RANGER") = FALSE) || 
+ISBLANK(PRIORVALUE({!myVariable_current.Trailhead_Rank__c})) )
+&amp;&amp;
+(Contains(UPPER( {!myVariable_current.Trailhead_Rank__c}), "RANGER")  = TRUE) &amp;&amp;
+{!myVariable_current.Notify_Mgr_if_Ranger_Badge_Count_Met__c} = FALSE &amp;&amp;
+{!myVariable_current.Honorary_Trailhead_Ranger__c} = FALSE</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>[Contact].Total_Badge_Count__c &lt; $Setup.TH_Min_Ranger_Score__c.Badges__c  &amp;&amp;
+[Contact].Trailhead_Points__c  &lt; $Setup.TH_Min_Ranger_Score__c.Points__c  &amp;&amp;
+[Contact].Honorary_Trailhead_Ranger__c = FALSE
+</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_5</name>
+        <dataType>Boolean</dataType>
+        <expression>{!myVariable_current.Total_Badge_Count__c} &lt; $Setup.TH_Min_Ranger_Score__c.Badges__c  &amp;&amp;
+{!myVariable_current.Trailhead_Points__c}  &lt; $Setup.TH_Min_Ranger_Score__c.Points__c  &amp;&amp;
+{!myVariable_current.Honorary_Trailhead_Ranger__c} = FALSE</expression>
+    </formulas>
+    <interviewLabel>TH_Notify_Manager_of_potential_Honorary_Trailhed_Ranger-19_InterviewLabel</interviewLabel>
+    <label>TH Notify Manager of Honorary Trailhead Ranger, set HTR=True</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Contact</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Contact]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A2</name>
+        <label>Mgr notified &amp; Ranger Status = true</label>
+        <locationX>100</locationX>
+        <locationY>300</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Honorary Trailhead Ranger</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Honorary_Trailhead_Ranger__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Manager Notified - Potential Ranger</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Manager_Notified_Potential_Ranger__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Contact]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A1</name>
+        <label>Set ranger status = TRUE</label>
+        <locationX>300</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Honorary Trailhead Ranger</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideReferenceTo</name>
+                <value>
+                    <stringValue/>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Honorary_Trailhead_Ranger__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <processMetadataValues>
+            <name>evaluationType</name>
+            <value>
+                <stringValue>always</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>isChildRelationship</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>reference</name>
+            <value>
+                <stringValue>[Contact]</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_5_A1</name>
+        <label>Set notified = false</label>
+        <locationX>500</locationX>
+        <locationY>200</locationY>
+        <filters>
+            <processMetadataValues>
+                <name>implicit</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </processMetadataValues>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>myVariable_current.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <processMetadataValues>
+                <name>dataType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>isRequired</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>leftHandSideLabel</name>
+                <value>
+                    <stringValue>Manager Notified - Potential Ranger</stringValue>
+                </value>
+            </processMetadataValues>
+            <processMetadataValues>
+                <name>rightHandSideType</name>
+                <value>
+                    <stringValue>Boolean</stringValue>
+                </value>
+            </processMetadataValues>
+            <field>Manager_Notified_Potential_Ranger__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Contact</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
+    </variables>
+</Flow>

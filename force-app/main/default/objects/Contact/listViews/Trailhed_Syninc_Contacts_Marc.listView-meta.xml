@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trailhed_Syninc_Contacts_Marc</fullName>
+    <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5) OR (6 AND 7))</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>Last_TH_Sync_Since_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Monitor_Trailhead_Badges__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>CONTACT.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Marc</value>
+    </filters>
+    <filters>
+        <field>CONTACT.LAST_NAME</field>
+        <operation>startsWith</operation>
+        <value>Benioff</value>
+    </filters>
+    <filters>
+        <field>CONTACT.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Parker</value>
+    </filters>
+    <filters>
+        <field>CONTACT.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Harris</value>
+    </filters>
+    <filters>
+        <field>CONTACT.FIRST_NAME</field>
+        <operation>equals</operation>
+        <value>Austin</value>
+    </filters>
+    <filters>
+        <field>CONTACT.LAST_NAME</field>
+        <operation>equals</operation>
+        <value>Stout</value>
+    </filters>
+    <label>Trailhed Sync Contacts - Execs</label>
+    <language>en_US</language>
+</ListView>

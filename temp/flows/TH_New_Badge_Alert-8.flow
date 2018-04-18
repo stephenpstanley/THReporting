@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <processMetadataValues>
+            <name>postTarget</name>
+            <value>
+                <stringValue>Stephen Stanley</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>postTargetUserType</name>
+            <value>
+                <stringValue>USER</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>textJson</name>
+            <value>
+                <stringValue>{&quot;mentions&quot;:[],&quot;message&quot;:&quot;A new Salesforce Internal {![Trailhead_Module__c].Type__c} badge has been added to Trailhead called {![Trailhead_Module__c].Title__c}\n\nThe record is here: {![Trailhead_Module__c].Name}\n\nYou can access it directly here: {![Trailhead_Module__c].Direct_Link__c}\n(Don&apos;t forget you need to be authenticated via Aloha first)\n\nIgnore this section for Superbadges:\nEstimated Time: {![Trailhead_Module__c].Estimated_Time_mins__c} minutes\nPossible Points: {![Trailhead_Module__c].Points_Available__c}\nPoints/Minute ratio: {![Trailhead_Module__c].Points_Minute__c}&quot;}</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_1_A1</name>
+        <label>@mention Stephen Stanley</label>
+        <locationX>100</locationX>
+        <locationY>200</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <stringValue>A new Salesforce Internal {!myVariable_current.Type__c} badge has been added to Trailhead called {!myVariable_current.Title__c}
+
+The record is here: {!myVariable_current.Name}
+
+You can access it directly here: {!myVariable_current.Direct_Link__c}
+(Don&apos;t forget you need to be authenticated via Aloha first)
+
+Ignore this section for Superbadges:
+Estimated Time: {!myVariable_current.Estimated_Time_mins__c} minutes
+Possible Points: {!myVariable_current.Points_Available__c}
+Points/Minute ratio: {!myVariable_current.Points_Minute__c}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>type</name>
+            <value>
+                <stringValue>USER</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <stringValue>00541000001NYWQAA4</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <processMetadataValues>
+            <name>postTarget</name>
+            <value>
+                <stringValue>Stephen Stanley</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>postTargetUserType</name>
+            <value>
+                <stringValue>USER</stringValue>
+            </value>
+        </processMetadataValues>
+        <processMetadataValues>
+            <name>textJson</name>
+            <value>
+                <stringValue>{&quot;mentions&quot;:[],&quot;message&quot;:&quot;A new Public {![Trailhead_Module__c].Type__c} badge has been added to Trailhead called {![Trailhead_Module__c].Title__c}\n\nThe record is here: {![Trailhead_Module__c].Name}\n\nYou can access it directly here: {![Trailhead_Module__c].Direct_Link__c}\n\n\nIgnore this section for Superbadges:\nEstimated Time: {![Trailhead_Module__c].Estimated_Time_mins__c} minutes\nPossible Points: {![Trailhead_Module__c].Points_Available__c}\nPoints/Minute ratio: {![Trailhead_Module__c].Points_Minute__c}&quot;}</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>myRule_3_A1</name>
+        <label>@mention Stephen Stanley</label>
+        <locationX>300</locationX>
+        <locationY>200</locationY>
+        <actionName>chatterPost</actionName>
+        <actionType>chatterPost</actionType>
+        <inputParameters>
+            <name>text</name>
+            <value>
+                <stringValue>A new Public {!myVariable_current.Type__c} badge has been added to Trailhead called {!myVariable_current.Title__c}
+
+The record is here: {!myVariable_current.Name}
+
+You can access it directly here: {!myVariable_current.Direct_Link__c}
+
+
+Ignore this section for Superbadges:
+Estimated Time: {!myVariable_current.Estimated_Time_mins__c} minutes
+Possible Points: {!myVariable_current.Points_Available__c}
+Points/Minute ratio: {!myVariable_current.Points_Minute__c}</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>type</name>
+            <value>
+                <stringValue>USER</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subjectNameOrId</name>
+            <value>
+                <stringValue>00541000001NYWQAA4</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision</name>
+        <label>myDecision</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnector>
+            <targetReference>myDecision2</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_pmetdec</targetReference>
+            </connector>
+            <label>New Internal Badge with Archived=False</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <processMetadataValues>
+            <name>index</name>
+            <value>
+                <numberValue>1.0</numberValue>
+            </value>
+        </processMetadataValues>
+        <name>myDecision2</name>
+        <label>myDecision2</label>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>default</defaultConnectorLabel>
+        <rules>
+            <name>myRule_3</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_3</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_3_A1</targetReference>
+            </connector>
+            <label>New Public badge with Archived=False</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>myRule_1_pmetdec</name>
+        <label>Previously Met Decision</label>
+        <locationX>100</locationX>
+        <locationY>100</locationY>
+        <defaultConnector>
+            <targetReference>myRule_1_A1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not Previously Met</defaultConnectorLabel>
+        <rules>
+            <name>myRule_1_pmetnullrule</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>myVariable_old</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>myRule_1_A1</targetReference>
+            </connector>
+            <label>Previously Met - Null</label>
+        </rules>
+        <rules>
+            <name>myRule_1_pmetrule</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>formula_myRule_1_pmetrule</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Previously Met - Prev</label>
+        </rules>
+    </decisions>
+    <description>When a new badge with Archived=False is added or when Archived change from False to True, chatter Stephen Stanley</description>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>isNew() &amp;&amp; 
+[Trailhead_Module__c].Archived__c  =  False &amp;&amp;
+[Trailhead_Module__c].badge_icon_url__c &lt;&gt; &apos;https://res.cloudinary.com/hy4kyit2a/image/upload/v1412121038/2014-TH-Coming_Soon_fqu1ot.png&apos; &amp;&amp;
+[Trailhead_Module__c].Salesforce_Internal__c = TRUE</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1</name>
+        <dataType>Boolean</dataType>
+        <expression>isNew() &amp;&amp; 
+{!myVariable_current.Archived__c}  =  False &amp;&amp;
+{!myVariable_current.badge_icon_url__c} &lt;&gt; &apos;https://res.cloudinary.com/hy4kyit2a/image/upload/v1412121038/2014-TH-Coming_Soon_fqu1ot.png&apos; &amp;&amp;
+{!myVariable_current.Salesforce_Internal__c} = TRUE</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>isNew() &amp;&amp; 
+[Trailhead_Module__c].Archived__c  =  False &amp;&amp;
+[Trailhead_Module__c].badge_icon_url__c &lt;&gt; &apos;https://res.cloudinary.com/hy4kyit2a/image/upload/v1412121038/2014-TH-Coming_Soon_fqu1ot.png&apos; &amp;&amp;
+[Trailhead_Module__c].Salesforce_Internal__c = TRUE</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_1_pmetrule</name>
+        <dataType>Boolean</dataType>
+        <expression>isNew() &amp;&amp; 
+{!myVariable_old.Archived__c}  =  False &amp;&amp;
+{!myVariable_old.badge_icon_url__c} &lt;&gt; &apos;https://res.cloudinary.com/hy4kyit2a/image/upload/v1412121038/2014-TH-Coming_Soon_fqu1ot.png&apos; &amp;&amp;
+{!myVariable_old.Salesforce_Internal__c} = TRUE</expression>
+    </formulas>
+    <formulas>
+        <processMetadataValues>
+            <name>originalFormula</name>
+            <value>
+                <stringValue>isNew() &amp;&amp; 
+[Trailhead_Module__c].Archived__c  =  False &amp;&amp;
+[Trailhead_Module__c].badge_icon_url__c &lt;&gt; &apos;https://res.cloudinary.com/hy4kyit2a/image/upload/v1412121038/2014-TH-Coming_Soon_fqu1ot.png&apos; &amp;&amp;
+[Trailhead_Module__c].Salesforce_Internal__c = FALSE</stringValue>
+            </value>
+        </processMetadataValues>
+        <name>formula_myRule_3</name>
+        <dataType>Boolean</dataType>
+        <expression>isNew() &amp;&amp; 
+{!myVariable_current.Archived__c}  =  False &amp;&amp;
+{!myVariable_current.badge_icon_url__c} &lt;&gt; &apos;https://res.cloudinary.com/hy4kyit2a/image/upload/v1412121038/2014-TH-Coming_Soon_fqu1ot.png&apos; &amp;&amp;
+{!myVariable_current.Salesforce_Internal__c} = FALSE</expression>
+    </formulas>
+    <interviewLabel>TH_New_Badge_Alert-8_Trailhead_Module__c</interviewLabel>
+    <label>TH - New Badge Alert</label>
+    <processMetadataValues>
+        <name>ObjectType</name>
+        <value>
+            <stringValue>Trailhead_Module__c</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>ObjectVariable</name>
+        <value>
+            <elementReference>myVariable_current</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OldObjectVariable</name>
+        <value>
+            <elementReference>myVariable_old</elementReference>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>TriggerType</name>
+        <value>
+            <stringValue>onAllChanges</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Workflow</processType>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <variables>
+        <name>myVariable_current</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Trailhead_Module__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_old</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Trailhead_Module__c</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
+    </variables>
+</Flow>

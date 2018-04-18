@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer</fullName>
+    <active>true</active>
+    <description>For contacts who are customers.</description>
+    <label>Customer</label>
+    <picklistValues>
+        <picklist>LeadSource</picklist>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Name</picklist>
+        <values>
+            <fullName>Dr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mr%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mrs%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ms%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prof%2E</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Reporting_Group__c</picklist>
+        <values>
+            <fullName>ANZ HT</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Howard Paster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Jean-Luc</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vijay Swamidass</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

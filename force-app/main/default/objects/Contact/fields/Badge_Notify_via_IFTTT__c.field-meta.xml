@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Badge_Notify_via_IFTTT__c</fullName>
+    <description>The formula only copies the account value for badge notification if this contact is being monitored.  If they are not being monitored, then no new badges being earned will generate updates to the contact record so this value will never be used, but having  Badge_Notify_via_IFTTT__c as TRUE while Monitor_Trailhead_Badges__c is FLASE looks very strange on the Contact record</description>
+    <externalId>false</externalId>
+    <formula>IF( Monitor_Trailhead_Badges__c, Account.Badge_Notify_via_IFTTT__c, FALSE)</formula>
+    <inlineHelpText>If the Account Field has this box checked, then it is checked on the contact record.  Any contact who gains a badge will trigger an IFTTT Message record - and message subscribers will be notified</inlineHelpText>
+    <label>Badge_Notify_via_IFTTT</label>
+    <type>Checkbox</type>
+</CustomField>

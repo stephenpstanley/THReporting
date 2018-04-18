@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manager_Notified_Potential_Ranger__c</fullName>
+    <defaultValue>true</defaultValue>
+    <description>Minimum require Badge Count is stored in Custom Setting "TH Min Ranger Badge Count"</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If not set and a contact has >= min required badge count,  notify their manager they are a potential ranger.  Notifications need the notify Manager setting to be TRUE and a Manager being recorded on the Contact record. No post made if Honorary Ranger=TRUE</inlineHelpText>
+    <label>Manager Notified - Potential Ranger</label>
+    <type>Checkbox</type>
+</CustomField>

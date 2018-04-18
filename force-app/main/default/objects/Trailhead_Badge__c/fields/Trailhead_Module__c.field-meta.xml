@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trailhead_Module__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Lookup to the module that the badge is for.  The linkage is done by a lookup based on the badge name at time of badge record creation as there is no access to the Badge ID via the API.  Hopefully at the time the sync job runs the title on the badge attempt and the name of the module will match</description>
+    <externalId>false</externalId>
+    <label>Trailhead Module</label>
+    <referenceTo>Trailhead_Module__c</referenceTo>
+    <relationshipLabel>Trailhead Badge Attempts</relationshipLabel>
+    <relationshipName>Trailhead_Badge_Attempts</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

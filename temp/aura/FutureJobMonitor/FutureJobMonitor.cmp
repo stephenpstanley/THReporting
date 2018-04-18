@@ -1,0 +1,176 @@
+<aura:component controller="FutureJobMonitorAPEXController" implements="flexipage:availableForAllPageTypes" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- handler to cancel the refresh timers when navigating away from the page -->
+    <aura:handler event="aura:locationChange" action="{!c.handleLocationChange }" /> 
+    <aura:attribute name="timerID" type="integer" />
+    <aura:attribute name="timerRunning" type="string" default="YES" />
+    <aura:attribute name="timerBtnLabel" type="string" default="Pause" />
+    <aura:attribute name="timerBtnVariant" type="string" default="brand" />
+    
+    <!-- "JobList" attibute store the list of @Future jobs. --> 
+    <aura:attribute name="JobList" type="List" /> 
+    <aura:attribute name="JobCount" type="integer" default="0"/> 
+    
+    <!-- I've given up tying to write dynamic code to look up all job status values and will hardcode the options -->
+    <aura:attribute name="QueuedCount" type="integer" default="0"/> 
+    <aura:attribute name="Queuedpct" type="integer" default="0"/>
+    <aura:attribute name="PreparingCount" type="integer" default="0"/> 
+    <aura:attribute name="Preparingpct" type="integer" default="0"/>    
+    <aura:attribute name="ProcessingCount" type="integer" default="0"/> 
+    <aura:attribute name="Processingpct" type="integer" default="0"/>    
+    <aura:attribute name="CompletedCount" type="integer" default="0"/> 
+    <aura:attribute name="Completedpct" type="integer" default="0"/>    
+    <aura:attribute name="AbortedCount" type="integer" default="0"/> 
+    <aura:attribute name="Abortedpct" type="integer" default="0"/>    
+    <aura:attribute name="FailedCount" type="integer" default="0"/> 
+    <aura:attribute name="Failedpct" type="integer" default="0"/>   
+    
+    <!-- Set the default values of the attribute refreshInterval to be the refresh time in seconds. Don't change other attributes --> 
+    <aura:attribute name="refreshInterval" type="integer" default="5"/>
+    <aura:attribute name="refreshProgress" type="integer" default="0"/>
+    <aura:attribute name="refreshProgressPCT" type="integer" default="0"/>
+    
+    <div class="slds-m-around--x-small">   
+        <div class="slds-progress-bar .slds-progress-bar_large slds-progress-bar_circular" aria-valuemin="0" aria-valuemax="{!v.RefreshInterval}" aria-valuenow="{!v.RefreshProgress}" role="progressbar">
+            <span class="slds-progress-bar__value" style="{!'width: ' + v.refreshProgressPCT + '%;'}"> 
+            </span>
+        </div>
+        <div class="slds-page-header">
+            <p class="slds-page-header__title slds-truncate" title="">Future Jobs ({!v.JobCount})</p>
+            <lightning:button variant="{!v.timerBtnVariant}" label="{!v.timerBtnLabel}"  onclick="{! c.btnTimer }" />
+        </div>
+        
+<!--    to debug the number of jobs in each ststus category uncomment this section    
+        <p>JobCount: {!v.JobCount}</p>
+        <p>Queued: {!v.QueuedCount}-{!v.Queuedpct}%</p>
+        <p>Preparing: {!v.PreparingCount}-{!v.Preparingpct}%</p>
+        <p>Processing: {!v.ProcessingCount}-{!v.Processingpct}%</p>
+        <p>Completed: {!v.CompletedCount}-{!v.Completedpct}%</p>
+        <p>Aborted: {!v.AbortedCount}-{!v.Abortedpct}%</p>
+        <p>Failed: {!v.FailedCount}-{!v.Failedpct}%</p>
+-->        
+        <aura:if isTrue="{!v.JobCount gt 0}">
+            <div>
+                <aura:if isTrue="{!v.QueuedCount gt 0}"> 
+                    <div>
+                        <lightning:layout >
+                            <lightning:layoutItem flexibility="auto"  size="1">
+                                <div class="Queued">&nbsp;&nbsp;&nbsp;Queued</div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem flexibility="auto"  size="11">
+                                <div class="Queued" style="{!'width: ' + v.Queuedpct + '%;'}">&nbsp;&nbsp;&nbsp;{!v.QueuedCount}</div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </div>                
+                </aura:if> 
+                <aura:if isTrue="{!v.PreparingCount gt 0}">
+                    <div>
+                        <lightning:layout >
+                            <lightning:layoutItem flexibility="auto"  size="1">
+                                <div class="Preparing">&nbsp;&nbsp;&nbsp;Preparing</div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem flexibility="auto"  size="11">
+                                <div class="Preparing" style="{!'width: ' + v.Preparingpct + '%;'}">&nbsp;&nbsp;&nbsp;{!v.PreparingCount}</div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </div>                
+                </aura:if>
+                <aura:if isTrue="{!v.ProcessingCount gt 0}">
+                    <div>
+                        <lightning:layout >
+                            <lightning:layoutItem flexibility="auto"  size="1">
+                                <div class="Processing">&nbsp;&nbsp;&nbsp;Processing</div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem flexibility="auto"  size="11">
+                                <div class="Processing" style="{!'width: ' + v.Processingpct + '%;'}">&nbsp;&nbsp;&nbsp;{!v.ProcessingCount}</div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </div>                
+                </aura:if>
+                <aura:if isTrue="{!v.CompletedCount gt 0}">
+                    <div>
+                        <lightning:layout >
+                            <lightning:layoutItem flexibility="auto"  size="1">
+                                <div class="Completed">&nbsp;&nbsp;&nbsp;Completed</div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem flexibility="auto"  size="11">
+                                <div class="Completed" style="{!'width: ' + v.Completedpct + '%;'}">&nbsp;&nbsp;&nbsp;{!v.CompletedCount}</div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </div>                </aura:if>
+                <aura:if isTrue="{!v.AbortedCount gt 0}">
+                    <div>
+                        <lightning:layout >
+                            <lightning:layoutItem flexibility="auto"  size="1">
+                                <div class="Aborted">&nbsp;&nbsp;&nbsp;Aborted</div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem flexibility="auto"  size="11">
+                                <div class="{!v.AbortedStatus}" style="{!'width: ' + v.Abortedpct + '%;'}">&nbsp;&nbsp;&nbsp;{!v.AbortedCount}</div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </div>                </aura:if>
+                <aura:if isTrue="{!v.FailedCount gt 0}">
+                    <div>
+                        <lightning:layout >
+                            <lightning:layoutItem flexibility="auto"  size="1">
+                                <div class="Failed">&nbsp;&nbsp;&nbsp;Failed</div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem flexibility="auto"  size="11">
+                                <div class="Failed" style="{!'width: ' + v.Failedpct + '%;'}">&nbsp;&nbsp;&nbsp;{!v.FailedCount}</div>
+                            </lightning:layoutItem>
+                        </lightning:layout>
+                    </div>                
+                </aura:if>
+            </div>
+            <div class="clear"></div>
+        </aura:if>
+
+
+        <table class="slds-table slds-table--bordered slds-table--striped slds-table--fixed-layout">
+            <thead>
+                <tr class="slds-text-heading--label">
+                    <th scope="col">
+                        <div class="slds-truncate" title="Method Name">Method Name</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Created Date">Created</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Status">Status</div>
+                    </th>                    
+                    <th scope="col">
+                        <div class="slds-truncate" title="Completed Date">Completed</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Error Details">Error Details</div>
+                    </th>
+                </tr>
+            </thead>           
+            <tbody>
+                <!-- Iterate all child record list in table format -->  
+                <aura:iteration items="{!v.JobList}" var="rec">
+                    <tr> 
+                        <td>
+                            <div class="slds-truncate" title="{!rec.MethodName}">{!rec.MethodName}</div>
+                        </td>
+                        <td>
+                            <lightning:formattedDateTime value="{!rec.CreatedDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit"/>
+                        </td>
+                        <td>
+                            <div class="{! 'slds-truncate ' + rec.Status }" title="{!rec.Status}">{!rec.Status}</div>
+                        </td>
+                        <td>
+                            <lightning:formattedDateTime value="{!rec.CompletedDate}" year="numeric" month="short" day="2-digit" hour="2-digit" minute="2-digit"/>
+                        </td>
+                        <td>
+                            <div class="slds-truncate" title="{!rec.ExtendedStatus}">{!rec.ExtendedStatus}</div>
+                        </td>
+                    </tr> 
+                </aura:iteration>
+            </tbody>         
+        </table>
+    </div>
+    
+    
+</aura:component>

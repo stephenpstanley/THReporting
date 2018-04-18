@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <columns>
+        <field>Trailhead_Module__c.Title__c</field>
+    </columns>
+    <columns>
+        <field>Trailhead_Module__c.Points_Available__c</field>
+    </columns>
+    <columns>
+        <field>Trailhead_Module__c.Estimated_Time_mins__c</field>
+    </columns>
+    <columns>
+        <field>Trailhead_Module__c.Points_Minute__c</field>
+    </columns>
+    <columns>
+        <field>Trailhead_Module__c.Direct_Link__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Trailhead_Module__c.Type__c</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Superbadge</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Trailhead: Bang for your buck</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Trailhead_Module__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <sortColumn>Trailhead_Module__c.Points_Minute__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Trailhead_Module__c.Created__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Badge_Notify_via_IFTTT__c</fullName>
+        <description>The formula only copies the account value for badge notification if this contact is being monitored.  If they are not being monitored, then no new badges being earned will generate updates to the contact record so this value will never be used, but having  Badge_Notify_via_IFTTT__c as TRUE while Monitor_Trailhead_Badges__c is FLASE looks very strange on the Contact record</description>
+        <externalId>false</externalId>
+        <formula>IF( Monitor_Trailhead_Badges__c, Account.Badge_Notify_via_IFTTT__c, FALSE)</formula>
+        <inlineHelpText>If the Account Field has this box checked, then it is checked on the contact record.  Any contact who gains a badge will trigger an IFTTT Message record - and message subscribers will be notified</inlineHelpText>
+        <label>Badge_Notify_via_IFTTT</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Badges_In_Progress__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Badges In Progress</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Full_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>FirstName  &amp; &apos; &apos; &amp;  LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Full Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Honorary_Ranger_Bears_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Honorary Ranger Bear&apos;s Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Honorary_Trailhead_Ranger__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Honorary Trailhead Ranger</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Last_TH_Sync_Since_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Last TH Sync Since Date (Local Time)</label>
+        <required>false</required>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Manager_Notified_Potential_Ranger__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Minimum require Badge Count is stored in Custom Setting &quot;TH Min Ranger Badge Count&quot;</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If not set and a contact has &gt;= min required badge count,  notify their manager they are a potential ranger.  Notifications need the notify Manager setting to be TRUE and a Manager being recorded on the Contact record. No post made if Honorary Ranger=TRUE</inlineHelpText>
+        <label>Manager Notified - Potential Ranger</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Modules_Completed__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Modules Completed</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Monitor_Trailhead_Badges__c</fullName>
+        <defaultValue>true</defaultValue>
+        <description>Check this box in order to sync badges from Trailhead
+The first time you check the box and save the record it will sync all Trailhead badges for this user
+If you uncheck the box it will delete all the related Trailhead badge records</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check this box in order to sync badges from Trailhead
+The first time you check the box and save the record it will sync all Trailhead badges for this user
+If you uncheck the box it will delete all the related Trailhead badge records</inlineHelpText>
+        <label>Monitor Trailhead Badges</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Notify_Mgr_if_Ranger_Badge_Count_Met__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Validation on this field required the manager field to be populated first.  
+Minimum Badge Count is based on formula field Potential_Ranger__c being set to true.  If the limit changes from the current value of 85, then the formula will need to be updated.  The process will only @mention the manager if the manager is a user of the org and the checkbox Honorary_Trailhead_Ranger__c is not already true.  This should handle the case where the 85 badge limit is increased beyond a point where existing rangers are in terms of badge counts</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If this person crosses the badge threshold required to become an Honorary Trailhead Ranger, then @mention their manager.</inlineHelpText>
+        <label>Notify Mgr if Ranger Badge Count Met</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Peer_Assessments_Completed__c</fullName>
+        <defaultValue>0</defaultValue>
+        <description>The total number of Peer Assessment Badges that have been completed by this contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The total number of Peer Assessment Badges that have been completed by this contact.</inlineHelpText>
+        <label>Peer Assessments Completed</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Projects_Completed__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Projects Completed</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Public_Profile_Page__c</fullName>
+        <externalId>false</externalId>
+        <label>Public Profile Page</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Reporting_Group__c</fullName>
+        <externalId>false</externalId>
+        <label>Reporting Group</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>ANZ HT</fullName>
+                    <default>false</default>
+                    <label>ANZ HT</label>
+                </value>
+                <value>
+                    <fullName>Howard Paster</fullName>
+                    <default>false</default>
+                    <label>Howard Paster</label>
+                </value>
+                <value>
+                    <fullName>Jean-Luc</fullName>
+                    <default>false</default>
+                    <label>Jean-Luc</label>
+                </value>
+                <value>
+                    <fullName>Vijay Swamidass</fullName>
+                    <default>false</default>
+                    <label>Vijay Swamidass</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>SFDCID__c</fullName>
+        <externalId>false</externalId>
+        <label>SFDCID</label>
+        <length>18</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Superbadges_Completed__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Superbadges Completed</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Total_Badge_Count__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Total Badge Count</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>TrailheadID__c</fullName>
+        <description>The Contact ID stored in Trailhead for this User ID.  Only stored for reference as Email address is the primary key used to look up records in Trailhead</description>
+        <externalId>false</externalId>
+        <label>TrailheadID</label>
+        <length>12</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Trailhead_Points__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Populated automatically from the Trailhead org</inlineHelpText>
+        <label>Trailhead Points</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Trailhead_Rank__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Populated from the Trailhead org</inlineHelpText>
+        <label>Trailhead Rank</label>
+        <length>60</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UserID__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Required to allow manager notifications when a staff member gets enough badges to be a potential ranger</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Required on the manager&apos;s contact record to allow the manager to receive notifications when a staff member gets enough badges to be a potential ranger
+Used with Notify Mgr if Ranger Badge Count Met</inlineHelpText>
+        <label>Trailhead Org UserID</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Contacts</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <listViews>
+        <fullName>Trailhead_Syninc_Contacts_AH</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>Last_TH_Sync_Since_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Monitor_Trailhead_Badges__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>ACCOUNT.NAME</field>
+            <operation>equals</operation>
+            <value>ANZ Foundation</value>
+        </filters>
+        <label>Trailhead Sync Contacts - Andrew HIll</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Trailhed_Syninc_Contacts</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>Last_TH_Sync_Since_Date__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CORE.USERS.ALIAS</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Monitor_Trailhead_Badges__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Trailhed Sync Contacts</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>Trailhed_Syninc_Contacts_Marc</fullName>
+        <booleanFilter>1 AND ((2 AND 3) OR (4 AND 5) OR (6 AND 7))</booleanFilter>
+        <columns>FULL_NAME</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>Last_TH_Sync_Since_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Monitor_Trailhead_Badges__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>CONTACT.FIRST_NAME</field>
+            <operation>equals</operation>
+            <value>Marc</value>
+        </filters>
+        <filters>
+            <field>CONTACT.LAST_NAME</field>
+            <operation>startsWith</operation>
+            <value>Benioff</value>
+        </filters>
+        <filters>
+            <field>CONTACT.FIRST_NAME</field>
+            <operation>equals</operation>
+            <value>Parker</value>
+        </filters>
+        <filters>
+            <field>CONTACT.LAST_NAME</field>
+            <operation>equals</operation>
+            <value>Harris</value>
+        </filters>
+        <filters>
+            <field>CONTACT.FIRST_NAME</field>
+            <operation>equals</operation>
+            <value>Austin</value>
+        </filters>
+        <filters>
+            <field>CONTACT.LAST_NAME</field>
+            <operation>equals</operation>
+            <value>Stout</value>
+        </filters>
+        <label>Trailhed Sync Contacts - Execs</label>
+        <language>en_US</language>
+    </listViews>
+    <listViews>
+        <fullName>VPContacts</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.TITLE</columns>
+        <columns>CONTACT.DEPARTMENT</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.TITLE</field>
+            <operation>startsWith</operation>
+            <value>Vice,VP</value>
+        </filters>
+        <label>VP-Level Contacts</label>
+        <language>en_US</language>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+            <allPartnerUsers></allPartnerUsers>
+        </sharedTo>
+    </listViews>
+    <recordTypes>
+        <fullName>Customer</fullName>
+        <active>true</active>
+        <description>For contacts who are customers.</description>
+        <label>Customer</label>
+        <picklistValues>
+            <picklist>LeadSource</picklist>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Name</picklist>
+            <values>
+                <fullName>Dr%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mr%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Mrs%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ms%2E</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prof%2E</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Reporting_Group__c</picklist>
+            <values>
+                <fullName>ANZ HT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Howard Paster</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Jean-Luc</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Vijay Swamidass</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <validationRules>
+        <fullName>Manager_Mandatory_if_HTR_Notify_checked</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNULL(ReportsTo.Id) 
+&amp;&amp;
+Notify_Mgr_if_Ranger_Badge_Count_Met__c = TRUE</errorConditionFormula>
+        <errorDisplayField>ReportsToId</errorDisplayField>
+        <errorMessage>Get real dude: How can I tell their manager the good news if I don&apos;t know who the potential Trailhead Ranger&apos;s manager is!
+Manager also has to be a user in this org. Llink the manager&apos;s user record to their contact record via Trailhead Org UserID field</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>No_bear_name_if_HTR_checkbox_not_checked</fullName>
+        <active>true</active>
+        <errorConditionFormula>NOT (ISBLANK(Honorary_Ranger_Bears_Name__c)) &amp;&amp;
+Honorary_Trailhead_Ranger__c = FALSE</errorConditionFormula>
+        <errorDisplayField>Honorary_Trailhead_Ranger__c</errorDisplayField>
+        <errorMessage>No way Jose&apos;, you can&apos;t record your bear&apos;s name if you aren&apos;t an Honorary Trailhead Ranger!</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SFDCID_mandatory_if_syncing_to_Trailhead</fullName>
+        <active>true</active>
+        <description>If Monitor Trailhead Badges = TRUE then SFDCID__c cannot be null</description>
+        <errorConditionFormula>Monitor_Trailhead_Badges__c = TRUE &amp;&amp;
+ ISBLANK(SFDCID__c)</errorConditionFormula>
+        <errorDisplayField>SFDCID__c</errorDisplayField>
+        <errorMessage>SFDCID  is required in order to sync Trailhead badges
+Monitor Trailhead Badges cannot be checked without a 62org user ID in the SFDCID field</errorMessage>
+    </validationRules>
+</CustomObject>

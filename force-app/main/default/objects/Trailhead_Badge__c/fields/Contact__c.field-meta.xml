@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Contact__c</fullName>
+    <description>The person who attempted or passed this badge</description>
+    <externalId>false</externalId>
+    <label>Contact</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>Contacts selected must have "Monitor Trailhead Badges" = TRUE</errorMessage>
+        <filterItems>
+            <field>Contact.Monitor_Trailhead_Badges__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Trailhead Badge Attempts</relationshipLabel>
+    <relationshipName>Trailhead_Badge_Attempts</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

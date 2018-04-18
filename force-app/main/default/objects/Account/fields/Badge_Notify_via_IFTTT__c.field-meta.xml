@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Badge_Notify_via_IFTTT__c</fullName>
+    <defaultValue>false</defaultValue>
+    <externalId>false</externalId>
+    <inlineHelpText>If this box is checked, then contacts under this Account who gain new badges will cause an IFTTT message record to be created.  IFTTT message subscribers will receive notifications</inlineHelpText>
+    <label>Badge Notify via IFTTT</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

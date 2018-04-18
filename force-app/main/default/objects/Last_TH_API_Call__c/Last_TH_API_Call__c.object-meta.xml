@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Contains details of the most recent Trailhead API Call that processed an Incremental Sync.  This setting is not updated when a full sync (i.e. when a new contact that syncs is added or the sync setting is changed to TRUE)</description>
+    <enableFeeds>false</enableFeeds>
+    <label>Last_TH_API_Call</label>
+    <visibility>Public</visibility>
+</CustomObject>

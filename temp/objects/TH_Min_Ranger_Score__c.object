@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>The minimum scores required to be considered an Honorary Trailhead Ranger.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Badges__c</fullName>
+        <externalId>false</externalId>
+        <label>Badges</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Points__c</fullName>
+        <description>The minimum number of points required to be an Honorary Trailhead Ranger</description>
+        <externalId>false</externalId>
+        <label>Points</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>TH Min Ranger Score</label>
+    <visibility>Protected</visibility>
+</CustomObject>

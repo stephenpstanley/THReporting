@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TrailheadID__c</fullName>
+    <description>The Contact ID stored in Trailhead for this User ID.  Only stored for reference as Email address is the primary key used to look up records in Trailhead</description>
+    <externalId>false</externalId>
+    <label>TrailheadID</label>
+    <length>12</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

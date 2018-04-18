@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Template to send email notificayion to JLL when CK earns a Trailhead badge</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>CorporateLogo</letterhead>
+    <name>JLL-CK has a badge</name>
+    <style>freeForm</style>
+    <subject>Look out!  CK has now earned {!Contact.00N4100000FU7Ks} badges</subject>
+    <textOnly>Hi Jean-Luc
+
+I thought you might like to know:
+
+CK has now completed:
+{!Contact.Modules_Completed__c} Modules
+{!Contact.Projects_Completed__c} Projects
+{!Contact.Superbadges_Completed__c} Superbadges
+{!Contact.Peer_Assessments_Completed__c} Peer Assessments
+
+Making a total of {!Contact.Total_Badge_Count__c} badges and {!Contact.Trailhead_Points__c} points.
+
+He&apos;s also got {!Contact.Badges_In_Progress__c} badges in progress
+
+If you want to stop these notifications, get Stephen to disable the Business Process named &quot;JLL - CK Badge Alert&quot; in his Trailhead monitoring org</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

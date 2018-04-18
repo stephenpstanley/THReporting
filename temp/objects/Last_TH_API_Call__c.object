@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Contains details of the most recent Trailhead API Call that processed an Incremental Sync.  This setting is not updated when a full sync (i.e. when a new contact that syncs is added or the sync setting is changed to TRUE)</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>CPU_Seconds_Used__c</fullName>
+        <description>Async calls are limited to 60 seconds
+Syncronous calls are limited to 10 seconds</description>
+        <externalId>false</externalId>
+        <label>CPU Seconds Used</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>End_Date_Time__c</fullName>
+        <description>Date and Time of the end of last Call. Used to Calculate how long the update runs for</description>
+        <externalId>false</externalId>
+        <label>End Date-Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Run_Time_Seconds__c</fullName>
+        <description>Number of seconds the last job ran for</description>
+        <externalId>false</externalId>
+        <label>Run Time Seconds</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start_Date_Time__c</fullName>
+        <description>Date and Time of the start of last Call. Used to limit the records returned in the http request</description>
+        <externalId>false</externalId>
+        <label>Start Date-Time</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Sync_SInce_Date_Time__c</fullName>
+        <externalId>false</externalId>
+        <label>Sync SInce Date Time (GMT)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Users_returned__c</fullName>
+        <externalId>false</externalId>
+        <label>Users returned</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Last_TH_API_Call</label>
+    <visibility>Public</visibility>
+</CustomObject>

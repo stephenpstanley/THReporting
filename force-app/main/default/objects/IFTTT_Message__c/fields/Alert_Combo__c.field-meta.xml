@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Alert_Combo__c</fullName>
+    <description>Concatenated field used to drive IFTTT alerts.  At time of writing, a value of 'TRUE-Badge' is used to trigger a badge alert and 'True-Fatal' sends an error message.  This is required as it looks like the IFTTT filter criteria only allows checking the value of a single field</description>
+    <externalId>false</externalId>
+    <formula>IF(IFTTT_Message__c  = TRUE, 'TRUE-', 'FALSE-')  &amp; 
+ IF (ISPICKVAL(Severity__c, 'Information'),'Information', '') &amp;  
+ IF (ISPICKVAL(Severity__c, 'Warning'),'Warning', '') &amp;  
+ IF (ISPICKVAL(Severity__c, 'Severe'),'Severe', '') &amp; 
+ IF (ISPICKVAL(Severity__c, 'Fatal'),'Fatal', '') &amp;  
+ IF (ISPICKVAL(Severity__c, 'IFTTT'),'IFTTT', '') &amp;  
+ IF (ISPICKVAL(Severity__c, 'Badge'),'Badge', '')</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Alert_Combo</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

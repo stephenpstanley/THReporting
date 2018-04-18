@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <cacheControl>Private</cacheControl>
+    <contentType>text/x-python-script</contentType>
+    <description>On Mac OS, download the file, open a terminal window and when on VPN run the script by:
+>> python Oauth.py
+
+Copy the long string following the word "Bearer" and store it in the TH_SessionID custom setting</description>
+</StaticResource>

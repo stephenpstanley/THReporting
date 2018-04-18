@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trailhead_Syninc_Contacts_AH</fullName>
+    <columns>FULL_NAME</columns>
+    <columns>CONTACT.EMAIL</columns>
+    <columns>Last_TH_Sync_Since_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Monitor_Trailhead_Badges__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <filters>
+        <field>ACCOUNT.NAME</field>
+        <operation>equals</operation>
+        <value>ANZ Foundation</value>
+    </filters>
+    <label>Trailhead Sync Contacts - Andrew HIll</label>
+    <language>en_US</language>
+</ListView>

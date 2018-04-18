@@ -1,0 +1,34 @@
+.THIS .Queued {
+    background-color: yellow;  
+    color:blue;
+}
+
+.THIS .Preparing {
+    background-color: blue;    
+    color:yellow;
+}
+
+.THIS .Processing {
+    background-color: green;   
+    color:yellow;
+}
+
+.THIS .Aborted {
+    background-color: orange;   
+}
+
+.THIS .Completed {
+    background-color: grey;   
+    color:yellow;
+}
+
+.THIS .Failed {
+    background-color: Red;   
+}
+
+.THIS.div.clear 
+{ 
+    clear:both; 
+    overflow:hidden; 
+    height:0; 
+}

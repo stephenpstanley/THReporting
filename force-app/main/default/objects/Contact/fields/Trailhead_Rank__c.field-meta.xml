@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Trailhead_Rank__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Populated from the Trailhead org</inlineHelpText>
+    <label>Trailhead Rank</label>
+    <length>60</length>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Manager_Mandatory_if_HTR_Notify_checked</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISNULL(ReportsTo.Id) 
+&amp;&amp;
+Notify_Mgr_if_Ranger_Badge_Count_Met__c = TRUE</errorConditionFormula>
+    <errorDisplayField>ReportsToId</errorDisplayField>
+    <errorMessage>Get real dude: How can I tell their manager the good news if I don't know who the potential Trailhead Ranger's manager is!
+Manager also has to be a user in this org. Llink the manager's user record to their contact record via Trailhead Org UserID field</errorMessage>
+</ValidationRule>

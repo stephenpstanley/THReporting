@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Used to store the OAuth token for the Trailhead API
+To derive it:
+
+Ensure you have Python 3.6 installed and have installed requests using pip3
+Change to the folder that has the script "oauth3_login.py" in it.
+On Stephen's MacBook Air it is in
+"/Users/stephen,stanley/Google Drive/Documents/Personal"
+
+(copy and execute this command to go straight there:)
+
+$ cd "/Users/stephen.stanley/Google Drive/Documents/Personal"
+
+MAKE SURE YOU ARE ON THE VPN
+
+use this command:
+
+$ python3 oauth3_login.py
+
+Enter your username and password when prompted
+
+On this custom setting, click on "Manage", then "Edit" and paste the entire string after the word Bearer following the line "access_token", completely replacing the existing string value</description>
+    <enableFeeds>false</enableFeeds>
+    <label>TH_SessionID</label>
+    <visibility>Public</visibility>
+</CustomObject>

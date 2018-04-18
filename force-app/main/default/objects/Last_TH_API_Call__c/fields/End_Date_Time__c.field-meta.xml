@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>End_Date_Time__c</fullName>
+    <description>Date and Time of the end of last Call. Used to Calculate how long the update runs for</description>
+    <externalId>false</externalId>
+    <label>End Date-Time</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>
