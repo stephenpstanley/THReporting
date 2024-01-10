@@ -49,7 +49,7 @@ public class TrailheadSyncV5 { // syncs by call the Trailhead API with SFDCID's 
         Boolean skipSuperbadges = False;
         
         // They Oauth key to the Trailhead API which gets combined with the SID below
-        String TrailheadAPIKey = '9ee1bee15f49805ce41eb37ed5f26528';
+        String TrailheadAPIKey = '<redacted>';
         // Get the SID to use - if you get a 402 assert error then you need to update the Custom Setting SID value: TH_SessionID
         TH_SessionID__c TH = TH_SessionID__c.getOrgDefaults();
         String SID = TH.SID__c;
