@@ -74,7 +74,7 @@ public class trailheadModuleSyncV2 {
         // fill in the necessary settings for calling out to the Trailhead API:
         req.setMethod('GET');
         req.setHeader('Content-Type', 'application/json; charset=utf-8');
-        req.setHeader('X-API-Key', '9ee1bee15f49805ce41eb37ed5f26528');
+        req.setHeader('X-API-Key', '<redacted>');
         // set the access token from the same org
         req.setHeader('Authorization', 'Bearer '+ sid);
         
